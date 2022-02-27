@@ -1,6 +1,4 @@
 import tkinter as tkr
-from lib2to3.pgen2.literals import evalString
-
 
 app=tkr.Tk(__name__)
 app.title('CALCULATOR')
@@ -11,32 +9,21 @@ app.geometry('600x800')
 tkr.Label(app,text='NUMBER 1').place(x=50,y=20)
 tkr.Label(app,text='NUMBER 2').place(x=50,y=50)
 
-
 ######## FUNCTIONS
 
 def show():
     print('NUMBER 1: ',en1.get())
     print('NUMBER 2: ',en2.get())
-    print('radiobutton values:',rb1.get())
-    
-    exp()
-def exp():
-    a=en1.get()
-    b=en2.get() 
-    if rb1.get()=='+':
-            exp=a+b
-    elif rb1.get()=='-':
-            exp=a-b
-    elif rb1.get()=='%':
-            exp=a%b
-    elif rb1.get()=='/':
-        exp=a/b
-    else:
-            exp=a*b
-    tkr.Label(app,text=exp,font=(80)).pack()
-##    exp=eval(a,rb1.get(),b)
+    print('radiobutton values:',rb1.get())    
+    cal()
+def cal(): 
+    c=str(en1.get())
+    d=str(en2.get())
+    exp=eval(c+rb1.get()+d)
     print('Calculation: ',exp)
-    ##print('+'/'-'/'%'/'*')
+    tkr.Label(app,text=exp,font=(80)).pack()
+
+
 ######## ENTRY BOXES
 
 en1=tkr.IntVar(app)
@@ -57,19 +44,10 @@ tkr.Button(app,text='CALCULATE',command=show).pack()
 
 ######## CALCULATION
 
-##def final():
-##    print(final)
-##    final=en1en2
-        
+
 
 ######## RESULT BUTTON
 
 
-
-
 tkr.Label(app,text='**RESULT**',font=(100)).pack()
-
-
-
-
 app.mainloop()
